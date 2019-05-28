@@ -1,5 +1,5 @@
 # 学习笔记
-![javascript](https://github.com/joe0110/study-notes/blob/master/logo.png)
+![javascript](https://github.com/joe0110/styudy-notes/blob/master/logo.png)
 ## 喜欢的一句话
 种一颗树最好的时间是十年前，其次是现在 (2019加油鸭！)
 
