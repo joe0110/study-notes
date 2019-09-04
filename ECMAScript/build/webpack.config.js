@@ -11,7 +11,7 @@ module.exports = {
     extensions: ['.js']
   },
   module: {
-    rules:[
+    rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
@@ -19,7 +19,13 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
+              presets: [
+                ['@babel/preset-env', {
+                  targets: {
+                    chrome: 75
+                  }
+                }]
+              ]
             }
           }
         ]
@@ -32,10 +38,10 @@ module.exports = {
       template: 'src/template/index.html'
     })
   ],
-  devtool: process.env.NODE_ENV === 'production'? false : 'inline-sourcemap',
+  devtool: process.env.NODE_ENV === 'production' ? false : 'inline-sourcemap',
   devServer: {
     // contentBase: '../dist/',
-    stats: "errors-only",
+    stats: 'errors-only',
     compress: false,
     host: 'localhost',
     port: 8089
