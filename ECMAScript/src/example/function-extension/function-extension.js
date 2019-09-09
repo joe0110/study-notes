@@ -268,11 +268,154 @@
 // const headAndTail = (head, ...tail) => [head, tail]
 // console.log(headAndTail(1, 2, 3, 4, 5))
 
-function foo () {
-  setTimeout(() => {
-    console.log(this.id)
-  }, 100)
-}
+// function foo () {
+//   setTimeout(() => {
+//     console.log(this.id)
+//   }, 100)
+// }
 
-// var id = 21
-foo.call({ id: 42 })
+// // var id = 21
+// foo.call({ id: 42 })
+
+
+// function Timer() {
+//   this.s1 = 0
+//   this.s2 = 0
+
+//   setInterval(() => this.s1++,1000)
+
+//   setInterval(function () {
+//     this.s2++
+//   },1000)
+// }
+
+// const timer = new Timer()
+// setTimeout(() => console.log(`s1: ${timer.s1}`),3100)
+// setTimeout(() => console.log(`s2: ${timer.s2}`),3100)
+
+// const handler = {
+//   id: '123456',
+
+//   init() {
+//     document.addEventListener('click', event => this.doSomething(event.type),false)
+//   },
+
+//   doSomething(type){
+//     console.log('Handling ' + type  + ' for ' + this.id);
+//   }
+// }
+
+// handler.init()
+
+// function foo() {
+//   console.log('======foo', this);
+//   return () => {
+//     console.log('======foo1', this);
+//     return () => {
+//       console.log('======foo2', this);
+//       return () => {
+//         console.log('======foo3', this);
+//         console.log('id:', this.id);
+//       };
+//     };
+//   };
+// }
+
+// var f = foo.call({ id: 1 });
+// var t1 = f.call({ id: 2 })()(); // id: 1
+// var t2 = f().call({ id: 3 })(); // id: 1
+// var t3 = f()().call({ id: 4 }); // id: 1
+
+// function foo() {
+//   setTimeout(() => {
+//     console.log(`agrs: ${arguments}`);
+//   }, 100);
+// }
+
+// foo(2,4,6,8)
+
+// (function() {
+//   return [
+//     (() => console.log(this.x)).bind({ x: 'inner'})()
+//   ]
+// }).call({ x: 'outer' })
+
+
+// const cat = {
+//   lives: 9,
+//   foods: '喵粮',
+//   jumps: () => {
+//     this.lives--;
+//   },
+//   eat() {
+//     return `小喵在吃 ${this.foods}`
+//   }
+// }
+
+// console.log(cat.eat.call({foods:'狗粮'}));
+
+
+// function insert(value) {
+//   return { into: function (array) {
+//     return { after: function (afterValue) {
+//       array.splice(array.indexOf(afterValue)+1, 0, value)
+//       console.log(array);
+//       return array
+//     }}
+//   }}
+// }
+
+// insert(2).into([1,3]).after(1)
+
+// const insert = (value) => ({ into: array =>  ({ after: afterValue => {
+//   array.splice(array.indexOf(afterValue)+1, 0, value)
+//   return array
+// }})})
+
+// console.log(insert(2).into([1,3]).after(1));
+
+
+// [2,3,4,5].reduce((accumulator,currentValue,currentIndex,array) => {
+//     // console.log('===========accumulator',accumulator);
+//     // console.log('===========currentValue',currentValue);
+//     console.log('===========currentIndex',currentIndex);
+//     // console.log('===========array',array);
+
+// })
+
+// const pipeline = (...funcs) => val => {
+//   funcs.reduce((a, b) => b(a), val)
+// };
+
+// const plus1 = a => a + 1;
+// const mult2 = a => a * 2;
+// const addThenMult = pipeline(plus1, mult2);
+
+// addThenMult(9)
+
+// const plus1 = a => a + 1;
+// const mult2 = a => a * 2;
+
+// mult2(plus1(5))
+
+// function currying(fn, n) {
+//   return function (m) {
+//     return fn.call(this, m, n);
+//   };
+// }
+
+// function tailFactorial(n, total) {
+//   if (n === 1) return total;
+//   return tailFactorial(n - 1, n * total);
+// }
+
+// const factorial = currying(tailFactorial, 1);
+
+// factorial(5) // 120
+
+// function /* foo comment */ foo () {}
+
+// console.log(foo.toString());
+
+// function foo() {}
+
