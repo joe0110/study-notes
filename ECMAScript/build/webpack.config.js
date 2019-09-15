@@ -25,7 +25,8 @@ module.exports = {
                     // chrome: 75
                   }
                 }]
-              ]
+              ],
+              plugins: ['@babel/plugin-transform-runtime']
             }
           }
         ]
